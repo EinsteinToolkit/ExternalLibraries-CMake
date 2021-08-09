@@ -4,7 +4,7 @@ PROVIDES CMake
 {
   SCRIPT src/detect.sh
   LANG bash
-  OPTIONS CMAKE CMAKE_DIR CMAKE_INSTALL_DIR
+  OPTIONS CMAKE_DIR CMAKE_INSTALL_DIR
 }
 
 # Pass configuration options to build script
