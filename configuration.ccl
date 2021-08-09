@@ -1,0 +1,11 @@
+# Configuration definitions for thorn CMake
+
+PROVIDES CMAKE
+{
+  SCRIPT src/detect.sh
+  LANG bash
+  OPTIONS CMAKE CMAKE_DIR CMAKE_INSTALL_DIR
+}
+
+# Pass configuration options to build script
+REQUIRES CMAKE
