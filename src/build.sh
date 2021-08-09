@@ -12,7 +12,7 @@ set -e                          # Abort on errors
 
 # Set locations
 THORN=CMake
-NAME=cmake-3.14.2
+NAME=cmake-v3.15.0
 SRCDIR="$(dirname $0)"
 BUILD_DIR=${SCRATCH_BUILD}/build/${THORN}
 if [ -z "${CMAKE_INSTALL_DIR}" ]; then
