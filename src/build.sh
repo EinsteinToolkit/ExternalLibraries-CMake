@@ -41,12 +41,14 @@ echo "CMake: Configuring..."
 cd ${NAME}
 
 # force build with gcc and not $CC which may be across compiler
-CFLAGS=-O2
-CXXFLAGS=-O2
+export CC=gcc
+export CFLAGS=-O2
+export CXX=g++
+export CXXFLAGS=-O2
 unset LD
 unset LDFLAGS
 unset LIBS
-./configure CXX=g++ CC=gcc --prefix=${INSTALL_DIR}
+./configure --prefix=${INSTALL_DIR}
 
 echo "CMake: Building..."
 ${MAKE}
