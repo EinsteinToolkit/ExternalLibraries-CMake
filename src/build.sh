@@ -45,8 +45,6 @@ export CC=gcc
 export CFLAGS=-O2
 export CXX=g++
 export CXXFLAGS=-O2
-unset LD
-unset LDFLAGS
 unset LIBS
 ./configure --prefix=${INSTALL_DIR}
 
