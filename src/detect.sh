@@ -22,7 +22,6 @@ else
 fi
 
 THORN=CMake
-NAME=cmake-v3.15.0
 
 ################################################################################
 # Decide which libraries to link with
@@ -38,26 +37,12 @@ if [ -z "${CMAKE_BUILD}" ] && [ -z "${CMAKE_DIR}" ]; then
     # do the job of "which" unless the location is already
     # hashed. So call "hash", then "hash -t".
     if CMAKE_PATH=$(hash cmake 2>/dev/null && hash -t cmake 2>/dev/null); then
-        # check if system version is at least as new as our own tarball
-        MY_CMAKE_VERSIONS=($(echo $NAME | $PERL -p -e 's/^cmake-v([0-9]+)[.]([0-9]+)[.]([0-9]+)/\1 \2 \3/'))
-        CMAKE_VERSIONS=($(cmake --version | $PERL -p -e 's/^cmake version ([0-9]+)[.]([0-9]+)[.]([0-9]+)/\1 \2 \3/'))
-        if ([ ${CMAKE_VERSIONS[0]} -gt ${MY_CMAKE_VERSIONS[0]} ]) ||
-           ([ ${CMAKE_VERSIONS[0]} -eq ${MY_CMAKE_VERSIONS[0]} ] &&
-            [ ${CMAKE_VERSIONS[1]} -gt ${MY_CMAKE_VERSIONS[1]} ]) ||
-           ([ ${CMAKE_VERSIONS[0]} -eq ${MY_CMAKE_VERSIONS[0]} ] &&
-            [ ${CMAKE_VERSIONS[1]} -eq ${MY_CMAKE_VERSIONS[1]} ] &&
-            [ ${CMAKE_VERSIONS[2]} -ge ${MY_CMAKE_VERSIONS[2]} ]); then
-            #TODO: there is not really a good reason to strip of "bin" and it could be
-            # "libexec" for all I know
-            CMAKE_DIR=${CMAKE_PATH%/bin/cmake}
-            echo "BEGIN MESSAGE"
-            echo "Cmake version is $CMAKE_VERSION"
-            echo "END MESSAGE"
-        else
-            echo "BEGIN ERROR"
-            echo "Bad cmake version $CMAKE_VERSION"
-            echo "END ERROR"
-        fi
+       # TODO here is not really a good reason to strip of "bin" and it could
+       # be "libexec" for all I know
+       CMAKE_DIR=${CMAKE_PATH%/bin/cmake}
+       echo "BEGIN MESSAGE"
+       echo "Found CNake in ${CMAKE_DIR}"
+       echo "END MESSAGE"
     else
         echo "BEGIN ERROR"
         echo "No cmake found in \$PATH"
