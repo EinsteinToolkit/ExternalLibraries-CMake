@@ -1,13 +1,13 @@
 Cactus Code Thorn CMake
 Author(s)    : Roland Haas
 Maintainer(s): Cactus team
-Licence      : GPLv3
+Licence      : BSD-3-Clause license
 --------------------------------------------------------------------------
 
 1. Purpose
 
-Distribute the CMake library; see https://github.com/astro-informatics/CMake
+Distribute the CMake makefile generator; see https://cmake.org/
 
-The CMAKE code provides functionality to perform fast and exact spin spherical
-harmonic transforms based on the sampling theorem on the sphere derived in
-McEwen & Wiaux (2011).
+CMake is cross-platform free and open-source software for build automation,
+testing, packaging and installation of software by using a compiler-independent
+method.
