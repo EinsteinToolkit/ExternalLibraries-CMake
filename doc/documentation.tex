@@ -24,7 +24,47 @@
 \fi
 
 \begin{abstract}
-Thorn \ThisThorn\ provides access to the CMake mesh refinement library.
+Thorn \ThisThorn\ provides access to the CMake configuration tool.
+\end{abstract}
+
+\subsection{Interaction With Other Thorns}
+The main product of this thorn is the \texttt{cmake} executable placed in its
+\texttt{bin} directory.
+
+Since \texttt{Cactus} does not provide a way to \textit{ExternalLibraries} to
+modify the search path in \verb|$PATH|, client thorns need to directly refer
+to \verb|${CMAKE_DIR}/bin/cmake| to use \texttt{cmake}. When making the
+dependence on this thorn \verb|OPTIONAL| a construct like
+
+\begin{verbatim}
+${CMAKE_DIR:+${CMAKE_DIR}/bin/}cmake $PWD
+\end{verbatim}
+
+may be used.
+
+\subsection{Examples}
+
+A typical usage example (for the \textit{ADIOS2} thorn) may look like this.
+
+In \texttt{configuration.ccl} have:
+
+\begin{verbatim}
+OPTIONAL CMake
+{
+}
+\end{verbatim}
+
+In \texttt{make.code.deps} have:
+
+\begin{verbatim}
+export CMAKE_DIR
+\end{verbatim}
+
+In \texttt{build.sh} have:
+
+\begin{verbatim}
+${CMAKE_DIR:+${CMAKE_DIR}/bin/}cmake -DCMAKE_BUILD_TYPE=${ADIOS2_BUILD_TYPE} ..
+\end{verbatim}
 
 % Do not delete next line
 % END CACTUS THORNGUIDE
